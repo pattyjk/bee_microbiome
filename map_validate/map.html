@@ -1,0 +1,112 @@
+<html>
+<head>
+
+<script type="text/javascript" src="./overlib.js"></script>
+</head>
+<body bgcolor="white"> <h1>No errors or warnings detected.<br></h1><h1>Mapping file error and warning details.</h1>
+Notes for interpreting this report:
+<ul>
+    <li>Errors will be listed in red, warnings in yellow.
+    <li>Mouse over an error or warning in a cell for more details.
+    <li>Errors in the header row may mask other errors, so these should be corrected first.
+    <li>Modifications to your mapping file to fix certain issues may result in different errors. You should run <tt>validate_mapping_file.py</tt> until no errors (nor warnings, ideally) are found.
+</ul>
+<p>
+Some general rules about formatting mapping files (see <a href="http://qiime.org/documentation/file_formats.html#metadata-mapping-files">here</a> for additional details):
+<ul>
+    <li>Header characters should only contain alphanumeric and <tt>_</tt> characters only.
+    <li>Valid characters for SampleID fields are alphanumeric and <tt>.</tt> only.<br>
+    <li>Other fields allow alphanumeric and <tt>+-%./ :,;_</tt> characters.
+</ul>
+General issues with your mapping file (i.e., those that do not pertain to a particular cell) will be listed here, if any:<table border="1" cellspacing="0" cellpadding="7"><tr></tr></table><br>
+<table border="2" cellspacing="0" cellpadding="5">
+
+<tr></tr>
+<tr>
+<th>SampleID</th><th>BarcodeSequence</th><th>LinkerPrimerSequence</th><th>Well</th><th>Hive</th><th>Date</th><th>Week</th><th>Description</th>
+</tr>
+
+<tr>
+<tr><th><tt>Bee1</tt></th><th><tt>TCCCTTGTCTCC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A1</tt></th><th><tt>1</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee2</tt></th><th><tt>TGCATACACTGG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B1</tt></th><th><tt>2</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee3</tt></th><th><tt>GCGATATATCGC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C1</tt></th><th><tt>3</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee4</tt></th><th><tt>CACTACGCTAGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D1</tt></th><th><tt>4</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee5</tt></th><th><tt>TACTACGTGGCC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E1</tt></th><th><tt>5</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee6</tt></th><th><tt>CGGTCAATTGAC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F1</tt></th><th><tt>6</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee7</tt></th><th><tt>GGTGACTAGTTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G1</tt></th><th><tt>7</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee8</tt></th><th><tt>CGTAAGATGCCT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H1</tt></th><th><tt>8</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee9</tt></th><th><tt>ACGAGACTGATT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A2</tt></th><th><tt>9</tt></th><th><tt>06.22.16</tt></th><th><tt>-1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee10</tt></th><th><tt>AGTCGAACGAGG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B2</tt></th><th><tt>1</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee11</tt></th><th><tt>CGAGCAATCCTA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C2</tt></th><th><tt>2</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee12</tt></th><th><tt>TGCAGTCCTCGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D2</tt></th><th><tt>3</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee13</tt></th><th><tt>GGCCAGTTCCTA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E2</tt></th><th><tt>4</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee14</tt></th><th><tt>GTGGAGTCTCAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F2</tt></th><th><tt>5</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee15</tt></th><th><tt>ATGGGTTCCGTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G2</tt></th><th><tt>6</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee16</tt></th><th><tt>GCGTTCTAGCTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H2</tt></th><th><tt>7</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee17</tt></th><th><tt>GCTGTACGGATT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A3</tt></th><th><tt>8</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee18</tt></th><th><tt>ACCAGTGACTCA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B3</tt></th><th><tt>9</tt></th><th><tt>06.30.16</tt></th><th><tt>0</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee19</tt></th><th><tt>AGTCGTGCACAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C3</tt></th><th><tt>1</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee20</tt></th><th><tt>ACCATAGCTCCG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D3</tt></th><th><tt>2</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee21</tt></th><th><tt>GATGTTCGCTAG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E3</tt></th><th><tt>3</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee22</tt></th><th><tt>GCTCGAAGATTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F3</tt></th><th><tt>4</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee23</tt></th><th><tt>TAGGCATGCTTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G3</tt></th><th><tt>5</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee24</tt></th><th><tt>GTTGTTCTGGGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H3</tt></th><th><tt>6</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee25</tt></th><th><tt>ATCACCAGGTGT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A4</tt></th><th><tt>7</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee26</tt></th><th><tt>GAATACCAAGTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B4</tt></th><th><tt>8</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee27</tt></th><th><tt>GTATCTGCGCGT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C4</tt></th><th><tt>9</tt></th><th><tt>07.01.16</tt></th><th><tt>1</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee28</tt></th><th><tt>TCGACATCTCTT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D4</tt></th><th><tt>1</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee29</tt></th><th><tt>CTATCTCCTGTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E4</tt></th><th><tt>2</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee30</tt></th><th><tt>AGGCTTACGTGT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F4</tt></th><th><tt>3</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee31</tt></th><th><tt>AACTAGTTCAGG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G4</tt></th><th><tt>4</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee32</tt></th><th><tt>GGACTTCCAGCT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H4</tt></th><th><tt>5</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee33</tt></th><th><tt>TGGTCAACGATA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A5</tt></th><th><tt>6</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee34</tt></th><th><tt>GTAGATCGTGTA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B5</tt></th><th><tt>7</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee35</tt></th><th><tt>CGAGGGAAAGTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C5</tt></th><th><tt>8</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee36</tt></th><th><tt>GAACACTTTGGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D5</tt></th><th><tt>9</tt></th><th><tt>07.12.16</tt></th><th><tt>2</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee37</tt></th><th><tt>ACTCACAGGAAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E5</tt></th><th><tt>1</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee38</tt></th><th><tt>TCTCTACCACTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F5</tt></th><th><tt>2</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee39</tt></th><th><tt>ATTCTGCCGAAG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G5</tt></th><th><tt>3</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee40</tt></th><th><tt>CTCACAACCGTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H5</tt></th><th><tt>4</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee41</tt></th><th><tt>ATCGCACAGTAA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A6</tt></th><th><tt>6</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee42</tt></th><th><tt>TAACGTGTGTGC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B6</tt></th><th><tt>7</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee43</tt></th><th><tt>CAAATTCGGGAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C6</tt></th><th><tt>8</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee44</tt></th><th><tt>GAGCCATCTGTA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D6</tt></th><th><tt>9</tt></th><th><tt>07.20.16</tt></th><th><tt>3</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee45</tt></th><th><tt>ATGATGAGCCTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E6</tt></th><th><tt>1</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee46</tt></th><th><tt>ACTTCCAACTTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F6</tt></th><th><tt>2</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee47</tt></th><th><tt>AGCATGTCCCGT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G6</tt></th><th><tt>3</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee48</tt></th><th><tt>CTGCTATTCCTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H6</tt></th><th><tt>4</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee49</tt></th><th><tt>GTCGTGTAGCCT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A7</tt></th><th><tt>5</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee50</tt></th><th><tt>CATTATGGCGTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B7</tt></th><th><tt>6</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee51</tt></th><th><tt>AGATTGACCAAC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C7</tt></th><th><tt>7</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee52</tt></th><th><tt>TTGGGTACACGT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D7</tt></th><th><tt>8</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee53</tt></th><th><tt>GTCGACAGAGGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E7</tt></th><th><tt>9</tt></th><th><tt>07.27.16</tt></th><th><tt>4</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee54</tt></th><th><tt>CTCACCTAGGAA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F7</tt></th><th><tt>1</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee55</tt></th><th><tt>GTACGATATGAC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G7</tt></th><th><tt>2</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee56</tt></th><th><tt>ATGTCACCGCTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H7</tt></th><th><tt>3</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee57</tt></th><th><tt>AGCGGAGGTTAG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A8</tt></th><th><tt>4</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee58</tt></th><th><tt>CCAATACGCCTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B8</tt></th><th><tt>6</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee59</tt></th><th><tt>AGTTACGAGCTA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C8</tt></th><th><tt>7</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee60</tt></th><th><tt>AAGGCGCTCCTT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D8</tt></th><th><tt>8</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee61</tt></th><th><tt>TGTCGCAAATAG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E8</tt></th><th><tt>9</tt></th><th><tt>08.04.16</tt></th><th><tt>5</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee62</tt></th><th><tt>GTGTTGTCGTGC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F8</tt></th><th><tt>1</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee63</tt></th><th><tt>GTGGTGGTTTCC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G8</tt></th><th><tt>2</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee64</tt></th><th><tt>TGTAACGCCGAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H8</tt></th><th><tt>3</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee65</tt></th><th><tt>ATCCTTTGGTTC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A9</tt></th><th><tt>4</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee66</tt></th><th><tt>GATCTGCGATCC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B9</tt></th><th><tt>5</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee67</tt></th><th><tt>GCATATGCACTG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C9</tt></th><th><tt>6</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee68</tt></th><th><tt>TAATACGGATCG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D9</tt></th><th><tt>7</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee69</tt></th><th><tt>CATCCCTCTACT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E9</tt></th><th><tt>8</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee70</tt></th><th><tt>CCACAGATCGAT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F9</tt></th><th><tt>9</tt></th><th><tt>08.09.16</tt></th><th><tt>6</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee71</tt></th><th><tt>TAGTATGCGCAA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>G9</tt></th><th><tt>1</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee72</tt></th><th><tt>AGCAGAACATCT</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>H9</tt></th><th><tt>2</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee73</tt></th><th><tt>TACAGCGCATAC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>A10</tt></th><th><tt>3</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee74</tt></th><th><tt>CAGCTCATCAGC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>B10</tt></th><th><tt>4</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>10EAA
+</tt></th></tr><tr><th><tt>Bee75</tt></th><th><tt>CAACTCCCGTGA</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>C10</tt></th><th><tt>6</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>06EAA
+</tt></th></tr><tr><th><tt>Bee76</tt></th><th><tt>TCGGAATTAGAC</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>D10</tt></th><th><tt>7</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee77</tt></th><th><tt>TATACCGCTGCG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>E10</tt></th><th><tt>8</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>control
+</tt></th></tr><tr><th><tt>Bee78</tt></th><th><tt>TATCGACACAAG</tt></th><th><tt>GTGCCAGCMGCCGCGGTAA</tt></th><th><tt>F10</tt></th><th><tt>9</tt></th><th><tt>08.18.16</tt></th><th><tt>7</tt></th><th><tt>06EAA</tt></th></tr>
+</tr>
+</table>
+
+</body>
+</html>
