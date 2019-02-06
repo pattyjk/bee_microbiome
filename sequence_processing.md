@@ -12,6 +12,8 @@ extract_barcodes.py -f lane1_Undetermined.R1.fastq -r lane1_Undetermined.R2.fast
 #join paired ends
 join_paired_ends.py -f lane1_Undetermined.R1.fastq -r lane1_Undetermined.R2.fastq -b bc_extacted/barcodes.fastq -o joined_reads
 
+#demultiplex the reads
+split_libraries_fastq.py -i joined_reads/fastqjoin.join.fastq -o demult_reads -b joined_reads/fastqjoin.join_barcodes.fastq --store_demultiplexed_fastq -m map.txt --barcode_type 12
 ```
 
 
