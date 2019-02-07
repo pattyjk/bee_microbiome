@@ -25,3 +25,7 @@ split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample 
 ```
 
 
+for i in *.fastq
+do
+grep -c "@" i > i_count.txt
+done
