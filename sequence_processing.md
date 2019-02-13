@@ -43,52 +43,60 @@ split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample_
 ## USEARCH analysis
 ```
 #get latest SILVA
-wget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zipwget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zip
-
-#check sample names
-./usearch32 -fastx_get_sample_names demult_reads/seqs.fastq -output name_check.txt
-#00:00 26Mb    100.0% 53,854 samples found
-
-#fix sample names
-sed 's/_/\./' demult_reads/seqs.fastq > demult_reads/seqs_fixed.fastq
-
-#check fixed sample names
-./usearch32 -fastx_get_sample_names demult_reads/seqs_fixed.fastq -output sample_name2.txt
-#100.0% 78 samples found
+#wget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zipwget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zip
 ```
 
+## Dereplicate sequences
 ```
-#dereplicate sequences
-./usearch32 -fastx_uniques test.fastq -fastqout test_derep.fq -sizeout
-00:01 44Mb    100.0% Reading test.fastq
-00:01 26Mb    100.0% DF                
-00:01 27Mb   53854 seqs, 6268 uniques, 4759 singletons (75.9%)
-00:01 27Mb   Min size 1, median 1, max 9705, avg 8.59
-00:01 27Mb    100.0% Writing test_derep.fq
-
-#remove singletons
-./usearch32 -sortbysize test_derep.fq -fastqout test_nosingle.fq -minsize 2
-
-#cluster against Silva 1.3.2
-./usearch32 -usearch_global test_nosingle.fq -id 0.97 -strand plus -uc ref_seqs.uc -dbmatched closed_seqs.fna -notmatchedfq failed_seqs.fq -db SILVA_132_QIIME_release/rep_set/rep_set_16S_only/97/silva_132_97_16S.fna
-#00:35 1.2Gb   100.0% Searching, 82.2% matched
-
-#de novo OTU pick (UCHIIME chimera check)
-./usearch32 -sortbysize failed_seqs.fq -fastqout failed_sort.fq
-
-./usearch32 -cluster_otus failed_sort.fq -minsize 2 -otus denovo_otus.fasta -relabel OTU_dn_ -uparseout denovo_out.up
-#00:00 5.0Mb   100.0% 31 OTUs, 41 chimeras
-
-#catenate data
-cat denovo_otus.fasta closed_seqs.fna > closed_denovo_seqs.fna
-
-#map reads back to original fastq file
-./usearch32 -usearch_global test.fastq -db closed_denovo_seqs.fna -strand plus -id 0.97 -uc otu_map.uc -otutabout OTU_table.txt
-# 100.0% Searching, 98.0% matched
+mkdir mergedfastq
+./usearch64 -fastx_uniques seqs_fixed.fastq -fastqout mergedfastq/uniques_combined_merged.fastq -sizeout
 ```
 
-## QIIME analyses
+## Remove Singeltons
 ```
-#assign taxonomy
-assign_taxonomy.py -i closed_denovo_seqs.fna -o taxonomy -r /Volumes/Untitled/BeeAmpliconsForPat/SILVA_132_QIIME_release/rep_set/rep_set_16S_only/97/silva_132_97_16S.fna -t /Volumes/Untitled/BeeAmpliconsForPat/SILVA_132_QIIME_release/taxonomy/16S_only/97/consensus_taxonomy_7_levels.txt
+./usearch64 -sortbysize mergedfastq/uniques_combined_merged.fastq -fastqout mergedfastq/nosigs_uniques_combined_merged.fastq -minsize 2
+```
+
+## Precluster Sequences
+```
+./usearch64 -cluster_fast mergedfastq/nosigs_uniques_combined_merged.fastq -centroids_fastq mergedfastq/denoised_nosigs_uniques_combined_merged.fastq -id 0.9 -maxdiffs 5 -abskew 10 -sizein -sizeout -sort size
+```
+
+## Reference-based OTU picking against the Silva v. 1.28
+```
+#pull Silva and extract it
+# wget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_128_release.tgz
+
+./usearch64 -usearch_global mergedfastq/denoised_nosigs_uniques_combined_merged.fastq -id 0.97 -db ./Silva_128_release/SILVA_128_QIIME_release/rep_set/rep_set_16S_only/97/97_otus_16S.fasta  -strand plus -uc mergedfastq/ref_seqs.uc -dbmatched mergedfastq/closed_reference.fasta -notmatchedfq mergedfastq/failed_closed.fq
+```
+
+## Sort by size and then de novo OTU picking on sequences that failed to hit GreenGenes
+```
+./usearch64 -sortbysize mergedfastq/failed_closed.fq -fastaout mergedfastq/sorted_failed_closed.fq
+
+./usearch64 -cluster_otus mergedfastq/sorted_failed_closed.fq -minsize 2 -otus mergedfastq/denovo_otus.fasta -relabel OTU_dn_ -uparseout mergedfastq/denovo_out.up
+```
+
+## Combine the rep sets between de novo and reference-based OTU picking
+```
+cat mergedfastq/closed_reference.fasta mergedfastq/denovo_otus.fasta > mergedfastq/full_rep_set.fna
+```
+
+## Map rep_set back to pre-dereplicated sequences and make OTU tables
+```
+./usearch64 -usearch_global seqs_fixed.fastq -db mergedfastq/full_rep_set.fna  -strand plus -id 0.97 -uc mergedfastq/OTU_map.uc -otutabout OTU_table.txt
+```
+
+## Assign taxonomy with SILVA 
+```
+source activate qiime1
+assign_taxonomy.py -i mergedfastq/full_rep_set.fna -o taxonomy -r Silva_128_release/SILVA_128_QIIME_release/rep_set/rep_set_16S_only/97/97_otus_16S.fasta -t 'Silva_128_release/SILVA_128_QIIME_release/taxonomy/16S_only/97/consensus_taxonomy_all_levels.txt'
+
+#add tax to OTU table
+biom convert -i OTU_table.txt -o OTU_table.biom --table-type='OTU table' --to-hdf5
+
+biom add-metadata -i OTU_table.biom -o otu_table_tax.biom --observation-metadata-fp=taxonomy/full_rep_set_tax_assignments.txt --sc-separated=taxonomy --observation-header=OTUID,taxonomy
+
+#summarize OTU table
+biom summarize-table -i otu_table_tax.biom -o otu_table_summmary.txt
 ```
