@@ -18,21 +18,26 @@ extract_barcodes.py -f lane1_Undetermined.R1.fastq -l 12 -o bc_extracted -s "0:"
 join_paired_ends.py -f lane1_Undetermined.R1.fastq -r lane1_Undetermined.R2.fastq -b bc_extracted/barcodes.fastq -o joined_reads
 
 #count reads that could be joined
-grep -c '@' /fastqjoin.join.fastq
-#
+grep -c '@' joined_reads/fastqjoin.join.fastq
+#134,356,347 reads
 
 #demultiplex the reads
-split_libraries_fastq.py -i joined_reads/fastqjoin.join.fastq -o demult_reads_R1 -b joined_reads/fastqjoin.join_barcodes.fastq --store_demultiplexed_fastq -m map.txt --barcode_type 12 --rev_comp_mapping_barcodes
+split_libraries_fastq.py -i joined_reads/fastqjoin.join.fastq -o demult_reads_paired -b joined_reads/fastqjoin.join_barcodes.fastq --store_demultiplexed_fastq -m map.txt --barcode_type 12 --rev_comp_mapping_barcodes
 
 #just R1
 split_libraries_fastq.py -b bc_extracted/barcodes.fastq -o demult_reads --barcode_type 12 -m map.txt -i lane1_Undetermined.R1.fastq --store_demultiplexed_fastq --rev_comp_mapping_barcodes
 
+#just R2
+split_libraries_fastq.py -b bc_extracted/barcodes.fastq -o demult_reads_R2 --barcode_type 12 -m map.txt -i lane1_Undetermined.R1.fastq --store_demultiplexed_fastq --rev_comp_mapping_barcodes
+
 #count reads in dataset
-grep -c '@' /Volumes/Untitled/BeeAmpliconsForPat/demult_reads_R1/seqs.fastq 
-#
+grep -c '@' /Volumes/Untitled/BeeAmpliconsForPat/demult_reads/seqs.fastq 
+#7652267
 
 #split fastq file by sample (for submission to NCBI later, if needed)
-split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample_R1 -i demult_reads_R1/
+split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample_R1 -i demult_reads/seqs.fastq
+
+split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample_R2 -i demult_reads_R2/seqs.fastq
 ```
 
 ## USEARCH analysis
@@ -41,13 +46,18 @@ split_sequence_file_on_sample_ids.py --file_type fastq -o fastq_split_by_sample_
 wget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zipwget https://www.arb-silva.de/fileadmin/silva_databases/qiime/Silva_132_release.zip
 
 #check sample names
-./usearch32 -fastx_get_sample_names ./demult_reads_R1/seqs.fastq -output sample_check.txt
+./usearch32 -fastx_get_sample_names demult_reads/seqs.fastq -output name_check.txt
 #00:00 26Mb    100.0% 53,854 samples found
 
 #fix sample names
-./usearch32 -fastx_get_sample_names test.fastq -output sample_name2.txt
-#00:01 22Mb    100.0% 7 samples found
+sed 's/_/\./' demult_reads/seqs.fastq > demult_reads/seqs_fixed.fastq
 
+#check fixed sample names
+./usearch32 -fastx_get_sample_names demult_reads/seqs_fixed.fastq -output sample_name2.txt
+#100.0% 78 samples found
+```
+
+```
 #dereplicate sequences
 ./usearch32 -fastx_uniques test.fastq -fastqout test_derep.fq -sizeout
 00:01 44Mb    100.0% Reading test.fastq
