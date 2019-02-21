@@ -1,3 +1,4 @@
+## Diversity values
 ```
 #Read in OTU table
 otu_table<-read.delim("OTU_table.txt", header=T, sep='\t', row.names=1)
