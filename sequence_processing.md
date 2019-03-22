@@ -70,7 +70,7 @@ mkdir mergedfastq
 ./usearch64 -usearch_global mergedfastq/denoised_nosigs_uniques_combined_merged.fastq -id 0.97 -db ./Silva_128_release/SILVA_128_QIIME_release/rep_set/rep_set_16S_only/97/97_otus_16S.fasta  -strand plus -uc mergedfastq/ref_seqs.uc -dbmatched mergedfastq/closed_reference.fasta -notmatchedfq mergedfastq/failed_closed.fq
 ```
 
-## Sort by size and then de novo OTU picking on sequences that failed to hit GreenGenes
+## Sort by size and then de novo OTU picking on sequences that failed to hit Silva
 ```
 ./usearch64 -sortbysize mergedfastq/failed_closed.fq -fastaout mergedfastq/sorted_failed_closed.fq
 
@@ -87,16 +87,7 @@ cat mergedfastq/closed_reference.fasta mergedfastq/denovo_otus.fasta > mergedfas
 ./usearch64 -usearch_global seqs_fixed.fastq -db mergedfastq/full_rep_set.fna  -strand plus -id 0.97 -uc mergedfastq/OTU_map.uc -otutabout OTU_table.txt
 ```
 
-## Assign taxonomy with SILVA 
+## Assign taxonomy with Sintax and SILVA 1.32
 ```
-source activate qiime1
-assign_taxonomy.py -i mergedfastq/full_rep_set.fna -o taxonomy -r Silva_128_release/SILVA_128_QIIME_release/rep_set/rep_set_16S_only/97/97_otus_16S.fasta -t 'Silva_128_release/SILVA_128_QIIME_release/taxonomy/16S_only/97/consensus_taxonomy_all_levels.txt'
-
-#add tax to OTU table
-biom convert -i OTU_table.txt -o OTU_table.biom --table-type='OTU table' --to-hdf5
-
-biom add-metadata -i OTU_table.biom -o otu_table_tax.biom --observation-metadata-fp=taxonomy/full_rep_set_tax_assignments.txt --sc-separated=taxonomy --observation-header=OTUID,taxonomy
-
-#summarize OTU table
-biom summarize-table -i otu_table_tax.biom -o otu_table_summmary.txt
+~/usearch64 -sintax full_rep_set.fna -db ~/SILVA_132_SINTAX/SILVA_132-90_SINTAX.udb --tabbedout otus_sintax_annotations.txt -strand both -sintax_cutoff 0.8
 ```
