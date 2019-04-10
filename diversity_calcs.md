@@ -76,6 +76,7 @@ ggplot(s16.div, aes(as.factor(Week), OTUs_Obs, fill=Description))+
   geom_boxplot()+
   theme_bw()+
   facet_wrap(~Week)
+```
 
 ## Test alpha div for significance
 ```
