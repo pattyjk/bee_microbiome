@@ -90,13 +90,13 @@ pairwise.t.test(s16.div$OTUs_Obs, s16.div$Description, p.adjust.method = 'fdr')
 #T06EAA 0.814   -     
 #T10EAA 0.025   0.025 
 
-
+#ANCOVA
 plot(s16.div$Week, s16.div$Shannon)
 summary(aov(s16.div$OTUs_Obs ~ s16.div$Week + s16.div$Description))
 
 
 summary(aov(s16.div$OTUs_Obs ~ as.factor(s16.div$Week) + s16.div$Description))
-#Df Sum Sq Mean Sq F value  Pr(>F)   
+#                         Df Sum Sq Mean Sq F value  Pr(>F)   
 #as.factor(s16.div$Week)  8   9284  1160.5   3.595 0.00158 **
 #s16.div$Description      2   3134  1567.1   4.855 0.01074 * 
 #Residuals               67  21629   322.8                   
