@@ -91,3 +91,33 @@ cat mergedfastq/closed_reference.fasta mergedfastq/denovo_otus.fasta > mergedfas
 ```
 ~/usearch64 -sintax full_rep_set.fna -db ~/SILVA_132_SINTAX/SILVA_132-90_SINTAX.udb --tabbedout otus_sintax_annotations.txt -strand both -sintax_cutoff 0.8
 ```
+
+## Filter mitochondira/chloroplasts
+```
+R 3.4.3
+library(tidyr)
+
+#read in OTU table
+otu_table<-read.delim("bee_microbiome/OTU_table.txt", row.names = 1, header=T)
+dim(otu_table)
+#614 by 78
+
+#read in taxonomic annotations
+annotations<-read.delim("bee_microbiome/otus_sintax_annotations.txt", header=F)
+row.names(annotations)<-annotations$V1
+
+#split tax annotations
+annotations2<-separate(annotations, V4, sep = ",", into=c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"))
+
+#ID chloroplast OTUs
+chloroplast_otus<-which(annotations2$Order=='o:Chloroplast' | annotations2$Family=="f:Mitochondria")
+length(chloroplast_otus)
+#105
+
+chloro_annotations<-annotations2[-chloroplast_otus,]
+
+#remove OTUs from table
+otu_table<-otu_table[row.names(otu_table) %in% row.names(chloro_annotations),]
+
+write.table(otu_table, "bee_microbiome/otu_table_no_mito_chloro.txt", sep='\t', quote=F)
+```
