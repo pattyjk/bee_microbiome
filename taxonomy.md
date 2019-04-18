@@ -17,9 +17,9 @@ row.names(annotations)<-annotations$V1
 annotations2<-separate(annotations, V4, sep = ",", into=c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"))
 
 #ID chloroplast OTUs
-chloroplast_otus<-which(annotations2$Order=='o:Chloroplast')
+chloroplast_otus<-which(annotations2$Order=='o:Chloroplast' | annotations2$Family=="f:Mitochondria")
 length(chloroplast_otus)
-#81
+#105
 
 chloro_annotations<-annotations2[-chloroplast_otus,]
 
