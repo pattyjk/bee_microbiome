@@ -5,19 +5,19 @@ Examining taxa considered to be core honey bee taxa.
 Frischella perrara<br/>
   -Orbaceae<br/>
 Bartonella apis<br/>
-  -Bartonellaceae
-Parasaccharibacter apium
- -Acetobacteraceae
-Gluconobacter
-  -Acetobacteraceae
-Lactobacillus Firm-4
-Lactobacillus Firm-5
-Bifidobacterium asteroides
-  -Bifidobacteriaceae
-Snodgrassella alvi
-  -Neisseriaceae
-Gilliamella apicola-
- -Orbaceae
+  -Bartonellaceae<br/>
+Parasaccharibacter apium<br/>
+ -Acetobacteraceae<br/>
+Gluconobacter<br/>
+  -Acetobacteraceae<br/>
+Lactobacillus Firm-4<br/>
+Lactobacillus Firm-5<br/>
+Bifidobacterium asteroides<br/>
+  -Bifidobacteriaceae<br/>
+Snodgrassella alvi<br/>
+  -Neisseriaceae<br/>
+Gilliamella apicola<br/>
+ -Orbaceae<br/>
 
 From: https://www.nature.com/articles/nrmicro.2016.43
 
