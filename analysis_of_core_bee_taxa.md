@@ -68,12 +68,15 @@ meta<-read.delim("bee_microbiome/map.txt", header=T)
 core_m<-melt(core_otu_table)
 core_m<-merge(core_m, meta, by.x='variable', by.y='SampleID')
 
-ggplot(core_m, aes(Week, value, colour=OTU))+
-  theme_bw()+
-  geom_point()+
-  facet_grid(OTU~Description)+
-  geom_line()
+#ggplot(core_m, aes(Week, value, colour=OTU))+
+#  theme_bw()+
+#  geom_point()+
+#  facet_grid(OTU~Description)+
+#  geom_line()
+```
 
+## Calculate Kruskal-Wallis test
+```
 #split OTU table by OTU 
 otu_split<-split(core_m, core_m$OTU)
 
