@@ -2,9 +2,9 @@
 
 Examining taxa considered to be core honey bee taxa.
 
-Frischella perrara
-  -Orbaceae
-Bartonella apis
+Frischella perrara<br/>
+  -Orbaceae<br/>
+Bartonella apis<br/>
   -Bartonellaceae
 Parasaccharibacter apium
  -Acetobacteraceae
