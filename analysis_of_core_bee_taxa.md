@@ -21,6 +21,8 @@ Gilliamella apicola<br/>
 
 From: https://www.nature.com/articles/nrmicro.2016.43
 
+## Extract core taxa from annotations
+
 ```
 library(vegan)
 library(tidyr)
